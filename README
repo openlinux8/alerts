@@ -1,0 +1,17 @@
+状态抖动问题：
+如CPU 使用率85%
+
+频繁发送问题：
+如磁盘空间使用超85%。值一直在变动
+
+多个告警抑制问题
+
+
+
+如果状态是firing，从redis中查找是否有这条告警记录。
+如果没有，新增一条告警记录，然后发送告警。
+如果有，更新记录，对比距上一次发送告警时间，超过3小时则发送，否则不发送。
+如果状态是resolved，从redis中查找是否有这条状态为firing的告警记录。
+把firing状态更新为resolved。
+
+curl -X POST http://192.168.2.1:8001/alert -d '{"receiver": "webhook","status": "firing","alerts": [{"status": "firing","labels": {"alertname": "NodeDiskFull","attr": "kube1","device": "/dev/sda1","env": "zhian_test","fstype": "ext4","instance": "kube1","job": "node_exporter","severity": "emergency","type": "node"},"annotations": {"description": "环境: zhian_test, 节点kube1 kube1 磁盘 /dev/sda1 空间使用超过85%, 当前 值是: 11.79%"},"startsAt": "2021-09-28T06:00:34.106Z","endsAt": "0001-01-01T00:00:00Z","fingerprint": "f421940971768566"}]}'

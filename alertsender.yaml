@@ -1,0 +1,32 @@
+enableDingDing: true
+enableWeChat: true
+adminDingDingTokens:
+  - token: 616cf05a1635c7dca2550bdf09f7f55669c8ec709fc6686c7b640d6dae01cbab
+    secret: SECcb7e2186ffdd7c8c9e9b31388919e1e89cbd459d23965aafa5a1cae2848e4d63
+  - token: e396ec11f8a5327afc06c90c86acf2f2f2bf08353d53aee1c27d56a9e93940a3
+  - token: e5a48ac7eb23969a0f89c00691ae4369da99c845fc14228b70ea1ca4e0e68d12
+adminWeChatTokens:
+  - token: 4918b810-3994-4206-8b82-a0d6a1e1243e
+  - token: 16146275-77e8-4384-b9a1-49d7faf644c8
+redis:
+  host: 192.168.2.82
+  port: 6379
+  password: 21ops.com
+namespaces:
+  ad: receiver-ad
+  data: receiver-data
+receivers:
+- name: receiver-ad
+  dingDingTokens:
+    - token: fa05578d17ea7637e281225c2f91dbb0c711a9eb3e124828838703127918899b
+    - token: a2ffb98c03ceb53ae9d6784b5fd09e98d898e04dc2439f8334a6cf8e232a6566
+  weChatTokens:
+    - token: 02e93c5d-0eca-4ef1-b8f3-771a836e0df1
+    - token: 07f97aee-2484-4129-ba8d-c5bbd39c251c
+- name: receiver-data
+  dingDingTokens:
+    - token: b8982fee0e044e37445d6c9dcc3a3a8bc395ebb60669b3075488ed6cb9650ade
+    - token: 42e963d6b709e859c1136309c3a9337e25222d2daa476d262438822e57d716cb
+  weChatTokens:
+    - token: dddda6ce-00fa-4510-8dc0-8b38cf36278b
+    - token: e5c3762a-327d-4d40-875e-d1b36b289ac4
